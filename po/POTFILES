@@ -1,0 +1,7 @@
+data/com.arteeh.Companion.desktop.in
+data/com.arteeh.Companion.appdata.xml.in
+data/com.arteeh.Companion.gschema.xml
+src/window.ui
+src/main.py
+src/window.py
+
