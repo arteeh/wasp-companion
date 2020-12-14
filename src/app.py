@@ -1,3 +1,4 @@
+import sys
 import gi
 
 gi.require_version('Gtk', '3.0')
@@ -5,27 +6,33 @@ from gi.repository import Gtk
 gi.require_version('Handy','1')
 from gi.repository import Handy
 
-import sys
+def o(name):
+	for i in range(0,len(objects)):
+		if objects[i].get_name() == name:
+			return objects[i]
+	return -1
 
-window = Gtk.Window(title = "Keypad Example with Python")
-vbox = Gtk.Box(orientation = Gtk.Orientation.VERTICAL)
-entry = Gtk.Entry()
-keypad = Handy.Keypad()
+# return true to prevent other signal handlers from deleting objects from the builder
+class Handler:
+	def _btnQuit(self, *args):
+		Gtk.main_quit()
+		return True
+	
+	def _btnAbout(self, *args):
+		o("windowAbout").show()
+		return True
+	
+	def _closeAbout(self, *args):
+		o("windowAbout").hide()
+		return True
 
-vbox.add(entry)     # widget to show dialed number
-vbox.add(keypad)
-vbox.set_halign(Gtk.Align.CENTER)
-vbox.set_valign(Gtk.Align.CENTER)
+Gtk.init()
+Handy.init()
+builder = Gtk.Builder()
+builder.add_from_file("app.ui")
+builder.connect_signals(Handler())
+objects = builder.get_objects()
 
-vbox.props.margin = 18
-vbox.props.spacing = 18
-keypad.set_row_spacing(6)
-keypad.set_column_spacing(6)
+o("window").show_all()
 
-keypad.set_entry(entry)     # attach the entry widget
-
-window.connect("destroy", Gtk.main_quit)
-window.add(vbox)
-window.show_all()
 Gtk.main()
-

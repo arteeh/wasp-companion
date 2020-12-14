@@ -1,0 +1,36 @@
+app-id: com.arteeh.Companion
+# Libhandy apparently depends on vala, so the freedesktop platform is not enough
+runtime: org.gnome.Platform
+runtime-version: '3.38'
+sdk: org.gnome.Sdk
+command: python3 /app/bin/app.pyc
+
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --socket=wayland
+  - --share=network
+  - --allow=bluetooth
+
+modules:
+  - name: libhandy
+    buildsystem: meson
+    builddir: true
+    config-opts:
+      - "-Dexamples=false"
+      - "-Dtests=false"
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/GNOME/libhandy.git
+  - name: companion
+    buildsystem: simple
+    subdir: src
+    build-commands:
+      - make build
+      - mkdir /app/bin
+      - cp app.pyc /app/bin/app.pyc
+    sources:
+      #- type: git
+      #  url: https://gitlab.com/arteeh/wasp-companion.git
+      - type: dir
+        path: ~/git/wasp-companion
