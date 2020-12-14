@@ -1,0 +1,1 @@
+This is a companion app for wasp-os, targeted towards Linux smartphones.
