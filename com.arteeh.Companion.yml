@@ -3,7 +3,7 @@ app-id: com.arteeh.Companion
 runtime: org.gnome.Platform
 runtime-version: '3.38'
 sdk: org.gnome.Sdk
-command: python3 /app/bin/app.pyc
+command: run.sh
 
 finish-args:
   - --share=ipc
@@ -26,11 +26,12 @@ modules:
     buildsystem: simple
     subdir: src
     build-commands:
-      - make build
       - mkdir /app/bin
-      - cp app.pyc /app/bin/app.pyc
+      - install run.sh /app/bin/run.sh
+      - install app.py /app/bin/app.py
+      - install app.ui /app/bin/app.ui
     sources:
       #- type: git
       #  url: https://gitlab.com/arteeh/wasp-companion.git
       - type: dir
-        path: ~/git/wasp-companion
+        path: /home/arteeh/git/wasp-companion
