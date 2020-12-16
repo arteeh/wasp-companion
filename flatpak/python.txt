@@ -1,0 +1,10 @@
+# Python modules that will be included in the flatpak
+
+#cbor
+#click
+#numpy
+pexpect
+#Pillow
+#pyserial
+#pysdl2
+#pytest

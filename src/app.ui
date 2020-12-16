@@ -48,7 +48,7 @@ For more information, please refer to <http://unlicense.org/>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
-            <property name="text" translatable="yes">About PineTime Companion</property>
+            <property name="text" translatable="yes">About Wasp Companion</property>
             <property name="centered">True</property>
             <signal name="clicked" handler="_btnAbout" swapped="no"/>
           </object>
@@ -81,7 +81,6 @@ For more information, please refer to <http://unlicense.org/>
               <object class="HdyViewSwitcherTitle" id="viewSwitcherTitle">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="hexpand">True</property>
                 <property name="stack">stack</property>
                 <property name="title">PineTime Companion</property>
               </object>
@@ -115,34 +114,48 @@ For more information, please refer to <http://unlicense.org/>
             <property name="can-focus">False</property>
             <property name="transition-type">slide-left-right</property>
             <child>
-              <object class="GtkButtonBox">
+              <object class="GtkStack">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="valign">center</property>
-                <property name="orientation">vertical</property>
-                <property name="spacing">5</property>
-                <property name="layout-style">start</property>
                 <child>
-                  <object class="GtkButton" id="btnHome">
-                    <property name="label" translatable="yes">Home</property>
+                  <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="valign">end</property>
+                        <property name="label" translatable="yes">Connecting...
+
+</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinner">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="valign">start</property>
+                        <property name="active">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="pack-type">end</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
+                    <property name="name">page0</property>
+                    <property name="title" translatable="yes">page0</property>
                   </packing>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
                 </child>
               </object>
               <packing>
@@ -152,32 +165,9 @@ For more information, please refer to <http://unlicense.org/>
               </packing>
             </child>
             <child>
-              <object class="GtkButtonBox">
+              <object class="GtkStack">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="valign">center</property>
-                <property name="orientation">vertical</property>
-                <property name="spacing">5</property>
-                <property name="layout-style">start</property>
-                <child>
-                  <object class="GtkButton" id="btnUpdates">
-                    <property name="label" translatable="yes">Update</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
                 <child>
                   <placeholder/>
                 </child>
@@ -251,9 +241,24 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to &lt;https://unlicense.org&gt;
 </property>
     <property name="authors">Maarten de Jong</property>
-    <property name="logo-icon-name">image-missing</property>
+    <property name="logo">icon.png</property>
     <property name="wrap-license">True</property>
     <property name="license-type">custom</property>
     <signal name="delete-event" handler="_closeAbout" swapped="no"/>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can-focus">False</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can-focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
   </object>
 </interface>

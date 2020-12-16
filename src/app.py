@@ -1,5 +1,6 @@
 import sys
 import gi
+from rtc import *
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
@@ -29,9 +30,12 @@ class Handler:
 Gtk.init()
 Handy.init()
 builder = Gtk.Builder()
-builder.add_from_file("app.ui")
+builder.add_from_file("/app/bin/app.ui")
 builder.connect_signals(Handler())
 objects = builder.get_objects()
+
+console = pexpect.spawn(pynus, encoding='UTF-8')
+handle_rtc(c)
 
 o("window").show_all()
 

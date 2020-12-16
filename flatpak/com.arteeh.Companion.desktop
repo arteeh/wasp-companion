@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Wasp Companion
 Keywords=wasp;companion;watch;smartwatch;pinetime;
-Exec=/app/bin/run.sh
+Exec=/app/bin/app.py
 Terminal=false
 Type=Application
 Icon=com.arteeh.Companion
