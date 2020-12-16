@@ -1,5 +1,8 @@
 [Desktop Entry]
 Name=Wasp Companion
-Exec=com.arteeh.Companion
+Keywords=wasp;companion;watch;smartwatch;pinetime;
+Exec=/app/bin/run.sh
+Terminal=false
 Type=Application
-#Icon=com.arteeh.Companion.png
+Icon=com.arteeh.Companion
+StartupNotify=true

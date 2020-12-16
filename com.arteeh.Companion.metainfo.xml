@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop">
-  <id>com.arteeh.Companion.desktop</id>
+<component type="desktop-application">
+  <id>com.arteeh.Companion</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>The Unlicense</project_license>
+  <developer_name>Maarten de Jong</developer_name>
   <name>Wasp Companion</name>
   <summary>A companion app for wasp-os</summary>
   <description>
     <p>
-      Comical is an easy to use and cross-platform CBR and CBZ reader which
-      prefetches and caches pages for speed.
-    </p>
-    <p>
-      Resized images are crisp, and you can view pages one or two at a time.
-      Comical is open-source, so feel free to contribute new features!
+      Wasp Companion is a companion app for the wasp-os smartwatch operating system.
     </p>
   </description>
+  <launchable type="desktop-id">com.arteeh.Companion.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <image>http://comical.sourceforge.net/images/comical-0.5-linux.jpg</image>

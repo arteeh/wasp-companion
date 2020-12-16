@@ -3,7 +3,7 @@ app-id: com.arteeh.Companion
 runtime: org.gnome.Platform
 runtime-version: '3.38'
 sdk: org.gnome.Sdk
-command: app.py
+command: run.sh
 
 finish-args:
   - --share=ipc
@@ -27,15 +27,15 @@ modules:
     subdir: src
     build-commands:
       - mkdir -p /app/bin
-      - mkdir -p /app/share/hicolor/128x128/apps
+      - mkdir -p /app/share/icons/hicolor/128x128/apps
       - mkdir -p /app/share/metainfo
       - mkdir -p /app/share/applications
       - install run.sh /app/bin/run.sh
       - install app.py /app/bin/app.py
       - install app.ui /app/bin/app.ui
-      - install ../logo-128.png /app/share/hicolor/128x128/apps/com.arteeh.Companion.png
+      - install ../logo-128.png /app/share/icons/hicolor/128x128/apps/com.arteeh.Companion.png
       - install ../com.arteeh.Companion.desktop /app/share/applications/com.arteeh.Companion.desktop
-      - install ../com.arteeh.Companion.appdata.xml /app/share/metainfo/com.arteeh.Companion.appdata.xml
+      - install ../com.arteeh.Companion.metainfo.xml /app/share/metainfo/com.arteeh.Companion.metainfo.xml
     sources:
       #- type: git
       #  url: https://gitlab.com/arteeh/wasp-companion.git
