@@ -1,3 +1,5 @@
+import os
+import subprocess
 import sys
 import gi
 import threading
@@ -43,6 +45,19 @@ def init():
 	o("window").show_all()
 	print("initialized")
 
+def rtc():
+	o("lblInitializing").set_label("Checking if time is synced...")
+	output=subprocess.check_output(['./wasptool','--check-rtc'],universal_newlines=True)
+	
+	if output.find("delta 0") >= 0:
+		print("time is already synced")
+	else:
+		o("lblInitializing").set_label("Syncing time...")
+		output=subprocess.check_output(['./wasptool','--rtc'],universal_newlines=True)
+		print(output)
+	
+	o("lblInitializing").set_label("Done!")
+
 def threadGtk():
 	print("gtk thread started")
 	Gtk.main()
@@ -50,7 +65,7 @@ def threadGtk():
 
 def threadWasptool():
 	print("wasptool thread started")
-	
+	rtc()
 	print("wasptool thread ended")
 
 init()
