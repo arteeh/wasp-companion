@@ -5,7 +5,7 @@
 #cbor
 #click
 #numpy
-#pexpect
+pexpect
 #Pillow
 #pyserial
 #pysdl2

@@ -13,7 +13,7 @@ finish-args:
   - --allow=bluetooth
 
 modules:
-  - python.json
+  - modules.json
   - name: libhandy
     buildsystem: meson
     builddir: true
@@ -31,7 +31,7 @@ modules:
       - install -D app.ui /app/bin/app.ui
       - install -D run.sh /app/bin/run.sh
       - install -D wasptool /app/bin/wasptool
-      - install -d pynus /app/bin/pynus
+      - cp -r pynus /app/bin/pynus
       - install -D ../flatpak/logo-128.png /app/bin/icon.png
       - install -D ../flatpak/logo-128.png /app/share/icons/hicolor/128x128/apps/com.arteeh.Companion.png
       - install -D ../flatpak/com.arteeh.Companion.desktop /app/share/applications/com.arteeh.Companion.desktop

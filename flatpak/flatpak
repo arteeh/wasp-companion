@@ -2,7 +2,9 @@
 
 _quick () {
 	# Install
-	flatpak run org.flatpak.Builder .builddir com.arteeh.Companion.yml --force-clean --user --install
+	flatpak run org.flatpak.Builder \
+		.builddir com.arteeh.Companion.yml \
+		--force-clean --user --install
 }
 
 _clear () {
@@ -15,7 +17,18 @@ _clear () {
 
 _modules () {
 	# Refresh the python module requirements
-	python3 ./flatpak-pip-generator --requirements-file=python.txt --output python
+	
+	# this is the default version, it fails to build pexpect
+	#python3 ./flatpak-pip-generator \
+	#	-r requirements.txt \
+	#	--output modules \
+	#	--runtime org.gnome.Sdk//3.38 \
+	#	--no-build-isolation
+	
+	# This is a version from a pull request, it looks like it works.
+	python3 flatpak-builder-tools/pip/flatpak-pip-generator \
+		pexpect \
+		--output modules
 }
 
 _requirements () {

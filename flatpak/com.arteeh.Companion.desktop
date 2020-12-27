@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Wasp Companion
-Keywords=wasp;companion;watch;smartwatch;pinetime;
+Keywords=wasp;companion;watch;smartwatch;pinetime;pine;pine64
 Exec=/app/bin/app.py
 Terminal=false
 Type=Application
