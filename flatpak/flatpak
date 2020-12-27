@@ -1,0 +1,74 @@
+#!/bin/bash
+
+_quick () {
+	# Install
+	flatpak run org.flatpak.Builder .builddir com.arteeh.Companion.yml --force-clean --user --install
+}
+
+_clear () {
+	# Clear up the previous build
+	rm -rf .builddir .flatpak-builder
+
+	# Remove the current flatpak if it exists
+	flatpak remove --delete-data -y com.arteeh.Companion
+}
+
+_modules () {
+	# Refresh the python module requirements
+	python3 ./flatpak-pip-generator --requirements-file=python.txt --output python
+}
+
+_requirements () {
+	# Install requirements
+	flatpak install -y --system org.flatpak.Builder
+	flatpak install -y --system org.gnome.Sdk//3.38
+}
+
+_play () {
+	# Run
+	flatpak run com.arteeh.Companion
+}
+
+_full () {
+	_clear
+	_modules
+	_requirements
+	_quick
+}
+
+_help () {
+	echo "Wasp Companion build script for Flatpak"
+	echo ""
+	echo "-q --quick           Run the build command"
+	echo "-c --clear           Remove the built app and generated files"
+	echo "-m --modules         Create a flatpak manifest for the python modules"
+	echo "-r --requirements    Install the build requirements"
+	echo "-p --play            Run the built app"
+	echo "-f --full            Do everything except running the app"
+}
+
+_main () {
+	if [ "$1" == "-q" ] || [ "$1" == "--quick" ]
+	then
+		_quick
+	elif [ "$1" == "-c" ] || [ "$1" == "--clear" ]
+	then
+		_clear
+	elif [ "$1" == "-m" ] || [ "$1" == "--modules" ]
+	then
+		_modules
+	elif [ "$1" == "-r" ] || [ "$1" == "--requirements" ]
+	then
+		_requirements
+	elif [ "$1" == "-p" ] || [ "$1" == "--play" ]
+	then
+		_play
+	elif [ "$1" == "-f" ] || [ "$1" == "--full" ]
+	then
+		_full
+	else
+		_help
+	fi
+}
+
+_main $1

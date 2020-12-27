@@ -27,20 +27,17 @@ modules:
     buildsystem: simple
     subdir: src
     build-commands:
-      - mkdir -p /app/bin
-      - mkdir -p /app/share/icons/hicolor/128x128/apps
-      - mkdir -p /app/share/metainfo
-      - mkdir -p /app/share/applications
-      - install app.py /app/bin/app.py
-      - install app.ui /app/bin/app.ui
-      - install run.sh /app/bin/run.sh
-      - install rtc.py /app/bin/rtc.py
-      - install ../flatpak/logo-128.png /app/bin/icon.png
-      - install ../flatpak/logo-128.png /app/share/icons/hicolor/128x128/apps/com.arteeh.Companion.png
-      - install ../flatpak/com.arteeh.Companion.desktop /app/share/applications/com.arteeh.Companion.desktop
-      - install ../flatpak/com.arteeh.Companion.metainfo.xml /app/share/metainfo/com.arteeh.Companion.metainfo.xml
+      - install -D app.py /app/bin/app.py
+      - install -D app.ui /app/bin/app.ui
+      - install -D run.sh /app/bin/run.sh
+      - install -D wasptool /app/bin/wasptool
+      - install -d pynus /app/bin/pynus
+      - install -D ../flatpak/logo-128.png /app/bin/icon.png
+      - install -D ../flatpak/logo-128.png /app/share/icons/hicolor/128x128/apps/com.arteeh.Companion.png
+      - install -D ../flatpak/com.arteeh.Companion.desktop /app/share/applications/com.arteeh.Companion.desktop
+      - install -D ../flatpak/com.arteeh.Companion.metainfo.xml /app/share/metainfo/com.arteeh.Companion.metainfo.xml
     sources:
       #- type: git
       #  url: https://gitlab.com/arteeh/wasp-companion.git
       - type: dir
-        path: /home/arteeh/git/watch/wasp-companion
+        path: /home/arteeh/git/wasp-companion

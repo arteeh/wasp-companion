@@ -26,43 +26,48 @@ class Handler:
 		o("windowAbout").hide()
 		return True
 
+# Fuction for grabbing UI objects
 def o(name):
 	for i in range(0,len(objects)):
 		if objects[i].get_name() == name:
 			return objects[i]
 	return -1
 
+# Start the app
 def init():
 	print("initializing")
 	Gtk.init()
 	Handy.init()
 	global builder
 	builder = Gtk.Builder()
-	builder.add_from_file("app.ui")
+	builder.add_from_file("/app/bin/app.ui")
 	builder.connect_signals(Handler())
 	global objects
 	objects = builder.get_objects()
 	o("window").show_all()
 	print("initialized")
 
+# Set the time
 def rtc():
 	o("lblInitializing").set_label("Checking if time is synced...")
-	output=subprocess.check_output(['./wasptool','--check-rtc'],universal_newlines=True)
+	output=subprocess.check_output(['/app/bin/wasptool','--check-rtc'],universal_newlines=True)
 	
 	if output.find("delta 0") >= 0:
 		print("time is already synced")
 	else:
 		o("lblInitializing").set_label("Syncing time...")
-		output=subprocess.check_output(['./wasptool','--rtc'],universal_newlines=True)
+		output=subprocess.check_output(['/app/bin/wasptool','--rtc'],universal_newlines=True)
 		print(output)
 	
 	o("lblInitializing").set_label("Done!")
 
+# UI thread
 def threadGtk():
 	print("gtk thread started")
 	Gtk.main()
 	print("gtk thread ended")
 
+# Thread for calling wasptool
 def threadWasptool():
 	print("wasptool thread started")
 	rtc()

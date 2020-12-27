@@ -1,9 +1,11 @@
-# Python modules that will be included in the flatpak
+# Python modules that will be included in the flatpak.
+# I copied this list from wasp-os, most are not needed.
+# Right now pexpect is the only one actually needed, but it doesn't seem to work.
 
 #cbor
 #click
 #numpy
-pexpect
+#pexpect
 #Pillow
 #pyserial
 #pysdl2

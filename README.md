@@ -4,28 +4,16 @@ This is a Linux companion app for [wasp-os](https://github.com/daniel-thompson/w
 
 This software is early in development so things are guaranteed to break.
 
-### Building (Flatpak)
+### Building
 
 You will need to have the following flatpaks installed:
 
-- org.gnome.Builder
-- org.gnome.Platform//3.38
+- `org.gnome.Builder`
+- `org.gnome.Sdk//3.38`
 
-Enter the flatpak directory and run ./flatpak.sh. When building is finished, you can run `flatpak run com.arteeh.Companion` to run the app. Be aware that building the app like this will not make it show up in your app list, and I'm not sure why.
+Enter the `flatpak` directory and run `./flatpak` for build commands. Run `./flatpak -f` to build everything.
 
-### Building (Bare metal)
-
-On Debian, you need the following packages installed:
-
-- python3
-- libgtk-3-dev
-- libhandy-1-dev
-
-You'll also need the following Python packages:
-
-- pexpect
-
-Then, just run `python3 app.py` to start the application.
+When building is finished, you can run `./flatpak -p` to run the app. Be aware that building the app like this will not make it show up in your app list, and I'm not sure why.
 
 ### About me
 
