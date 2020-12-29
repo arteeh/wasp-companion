@@ -4,6 +4,22 @@ This is a Linux companion app for [wasp-os](https://github.com/daniel-thompson/w
 
 This software is early in development so things are guaranteed to break.
 
+### Functionality
+
+On the front end, this app will:
+
+- Show a graph of heartbeat data
+- Show a graph of step counter data
+- Add, update or remove apps
+- Update wasp-os (DFU)
+- Present settings (brightness, bluetooth, notifications, set a watchface, go to the bootloader, turn on the flashlight, restart the watch)
+
+Behind the scenes, it will:
+
+- Synchronize the time on the watch (RTC)
+- Control music that's playing on your phone
+- Sync the timer and stopwatch with the Clock app on your phone
+
 ### Building
 
 You will need to have the following flatpaks installed:

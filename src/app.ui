@@ -65,6 +65,8 @@ For more information, please refer to <http://unlicense.org/>
     <property name="name">window</property>
     <property name="can-focus">False</property>
     <property name="window-position">center</property>
+    <property name="default-width">500</property>
+    <property name="default-height">720</property>
     <signal name="destroy" handler="_btnQuit" swapped="no"/>
     <child>
       <object class="GtkBox">
