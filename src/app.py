@@ -4,10 +4,15 @@ import sys
 import gi
 import threading
 
+# UI library
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
+# Mobile GTK widgets
 gi.require_version('Handy','1')
 from gi.repository import Handy
+# Music player control
+gi.require_version('Playerctl', '2.0')
+from gi.repository import Playerctl, GLib
 
 # return true to prevent other signal handlers from deleting objects from the builder
 class Handler:

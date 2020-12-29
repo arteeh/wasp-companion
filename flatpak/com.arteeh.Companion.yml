@@ -23,6 +23,14 @@ modules:
     sources:
       - type: git
         url: https://gitlab.gnome.org/GNOME/libhandy.git
+  - name: Playerctl
+    buildsystem: meson
+    builddir: true
+    config-opts:
+      - "-Dgtk-doc=false"
+    sources:
+      - type: git
+        url: https://github.com/altdesktop/playerctl.git
   - name: companion
     buildsystem: simple
     subdir: src
