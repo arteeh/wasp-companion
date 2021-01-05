@@ -27,7 +27,7 @@ _modules () {
 	
 	# This is a version from a pull request, it looks like it works.
 	python3 flatpak-builder-tools/pip/flatpak-pip-generator \
-		pexpect \
+		--requirements-file requirements.txt \
 		--output modules
 }
 

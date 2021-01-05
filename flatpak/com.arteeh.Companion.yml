@@ -11,6 +11,8 @@ finish-args:
   - --socket=wayland
   - --share=network
   - --allow=bluetooth
+  - --socket=system-bus
+  - --socket=session-bus
 
 modules:
   - modules.json

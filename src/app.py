@@ -56,14 +56,12 @@ def init():
 def rtc():
 	o("lblInitializing").set_label("Checking if time is synced...")
 	output=subprocess.check_output(['/app/bin/wasptool','--check-rtc'],universal_newlines=True)
-	
 	if output.find("delta 0") >= 0:
 		print("time is already synced")
 	else:
 		o("lblInitializing").set_label("Syncing time...")
-		output=subprocess.check_output(['/app/bin/wasptool','--rtc'],universal_newlines=True)
+		#output=subprocess.check_output(['/app/bin/wasptool','--rtc'],universal_newlines=True)
 		print(output)
-	
 	o("lblInitializing").set_label("Done!")
 
 # UI thread
