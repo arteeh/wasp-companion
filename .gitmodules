@@ -1,3 +1,7 @@
 [submodule "src/pynus"]
 	path = src/pynus
 	url = https://github.com/daniel-thompson/pynus.git
+
+[submodule "flatpak/flatpak-builder-tools"]
+	path = flatpak/flatpak-builder-tools
+	url = https://github.com/flatpak/flatpak-builder-tools.git

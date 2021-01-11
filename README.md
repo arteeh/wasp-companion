@@ -22,14 +22,11 @@ Behind the scenes, it will:
 
 ### Building
 
-You will need to have the following flatpaks installed:
+Start by running `git submodule init` and `git submodule update` in the project's root directory.
 
-- `org.gnome.Builder`
-- `org.gnome.Sdk//3.38`
+I've made a simple helper script to automate the build process of this project. Enter the `flatpak` directory and run `./flatpak` to see build commands. Run `./flatpak -f` to install build dependencies, update python modules and build the flatpak. When building is finished, you can run `./flatpak -p` to run the app. Be aware that building the app like this will not make it show up in your app list, and I'm not sure why.
 
-Enter the `flatpak` directory and run `./flatpak` for build commands. Run `./flatpak -f` to build everything.
-
-When building is finished, you can run `./flatpak -p` to run the app. Be aware that building the app like this will not make it show up in your app list, and I'm not sure why.
+To rebuild modules (`./flatpak -m`), you need `pip3` installed locally.
 
 ### About me
 

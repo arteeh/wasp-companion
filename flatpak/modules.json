@@ -1,153 +1,19 @@
 {
-    "name": "modules",
+    "name": "python3-pexpect",
     "buildsystem": "simple",
-    "build-commands": [],
-    "modules": [
+    "build-commands": [
+        "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} pexpect"
+    ],
+    "sources": [
         {
-            "name": "python3-cbor",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} cbor"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/9b/99/01c6a987c920500189eb74a291bd3a388e6c7cf85736bb6b066d9833315e/cbor-1.0.0.tar.gz",
-                    "sha256": "13225a262ddf5615cbd9fd55a76a0d53069d18b07d2e9f19c39e6acb8609bbb6"
-                }
-            ]
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/22/a6/858897256d0deac81a172289110f31629fc4cee19b6f01283303e18c8db3/ptyprocess-0.7.0-py2.py3-none-any.whl",
+            "sha256": "4b41f3967fce3af57cc7e94b888626c18bf37a083e3651ca8feeb66d492fef35"
         },
         {
-            "name": "python3-click",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} click"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/d2/3d/fa76db83bf75c4f8d338c2fd15c8d33fdd7ad23a9b5e57eb6c5de26b430e/click-7.1.2-py2.py3-none-any.whl",
-                    "sha256": "dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"
-                }
-            ]
-        },
-        {
-            "name": "python3-pexpect",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} pexpect"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/39/7b/88dbb785881c28a102619d46423cb853b46dbccc70d3ac362d99773a78ce/pexpect-4.8.0-py2.py3-none-any.whl",
-                    "sha256": "0b48a55dcb3c05f3329815901ea4fc1537514d6ba867a152b581d69ae3710937"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/22/a6/858897256d0deac81a172289110f31629fc4cee19b6f01283303e18c8db3/ptyprocess-0.7.0-py2.py3-none-any.whl",
-                    "sha256": "4b41f3967fce3af57cc7e94b888626c18bf37a083e3651ca8feeb66d492fef35"
-                }
-            ]
-        },
-        {
-            "name": "python3-Pillow",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} Pillow"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/2b/06/93bf1626ef36815010e971a5ce90f49919d84ab5d2fa310329f843a74bc1/Pillow-8.0.1.tar.gz",
-                    "sha256": "11c5c6e9b02c9dac08af04f093eb5a2f84857df70a7d4a6a6ad461aca803fb9e"
-                }
-            ]
-        },
-        {
-            "name": "python3-pyserial",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} pyserial"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/07/bc/587a445451b253b285629263eb51c2d8e9bcea4fc97826266d186f96f558/pyserial-3.5-py2.py3-none-any.whl",
-                    "sha256": "c4451db6ba391ca6ca299fb3ec7bae67a5c55dde170964c7a14ceefec02f2cf0"
-                }
-            ]
-        },
-        {
-            "name": "python3-pysdl2",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} pysdl2"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/60/ba/ddb48261848874eeb3d54963edbf3c74fff86499746aeb23151f123953bb/PySDL2-0.9.7-py3-none-any.whl",
-                    "sha256": "35646eabee980ccc49f675e3de0aed9bf001045f46ecb6699a3c9ec074870141"
-                }
-            ]
-        },
-        {
-            "name": "python3-pytest",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} pytest"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/a0/28/85c7aa31b80d150b772fbe4a229487bc6644da9ccb7e427dd8cc60cb8a62/pluggy-0.13.1-py2.py3-none-any.whl",
-                    "sha256": "966c145cd83c96502c3c3868f50408687b38434af77734af1e9ca461a4081d2d"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/44/6f/7120676b6d73228c96e17f1f794d8ab046fc910d781c8d151120c3f1569e/toml-0.10.2-py2.py3-none-any.whl",
-                    "sha256": "806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/67/32/6fe01cfc3d1a27c92fdbcdfc3f67856da8cbadf0dd9f2e18055202b2dc62/py-1.10.0-py2.py3-none-any.whl",
-                    "sha256": "3b80836aa6d1feeaa108e046da6423ab8f6ceda6468545ae8d02d9d58d18818a"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/b1/a7/588bfa063e7763247ab6f7e1d994e331b85e0e7d09f853c59a6eb9696974/packaging-20.8-py2.py3-none-any.whl",
-                    "sha256": "24e0da08660a87484d1602c30bb4902d74816b6985b93de36926f5bc95741858"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/8a/bb/488841f56197b13700afd5658fc279a2025a39e22449b7cf29864669b15d/pyparsing-2.4.7-py2.py3-none-any.whl",
-                    "sha256": "ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/9b/dd/b3c12c6d707058fa947864b67f0c4e0c39ef8610988d7baea9578f3c48f3/iniconfig-1.1.1-py2.py3-none-any.whl",
-                    "sha256": "011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/d7/15/5ef931cbd22585865aad0ea025162545b53af9319cf38542e0b7981d5b34/pytest-6.2.1-py3-none-any.whl",
-                    "sha256": "1969f797a1a0dbd8ccf0fecc80262312729afea9c17f1d70ebf85c5e76c6f7c8"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/c3/aa/cb45262569fcc047bf070b5de61813724d6726db83259222cd7b4c79821a/attrs-20.3.0-py2.py3-none-any.whl",
-                    "sha256": "31b2eced602aa8423c2aea9c76a724617ed67cf9513173fd3a4f03e3a929c7e6"
-                }
-            ]
-        },
-        {
-            "name": "python3-dbus",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} dbus"
-            ],
-            "sources": []
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/39/7b/88dbb785881c28a102619d46423cb853b46dbccc70d3ac362d99773a78ce/pexpect-4.8.0-py2.py3-none-any.whl",
+            "sha256": "0b48a55dcb3c05f3329815901ea4fc1537514d6ba867a152b581d69ae3710937"
         }
     ]
 }

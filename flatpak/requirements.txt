@@ -1,8 +1,1 @@
-cbor
-click
 pexpect
-Pillow
-pyserial
-pysdl2
-pytest
-dbus
