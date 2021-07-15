@@ -34,7 +34,7 @@ _modules () {
 _requirements () {
 	# Install requirements
 	flatpak install -y --user org.flatpak.Builder
-	flatpak install -y --user org.gnome.Sdk//3.38
+	flatpak install -y --user org.gnome.Sdk//40
 }
 
 _play () {
