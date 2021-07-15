@@ -50,4 +50,4 @@ modules:
       #- type: git
       #  url: https://gitlab.com/arteeh/wasp-companion.git
       - type: dir
-        path: /home/arteeh/git/wasp-companion
+        path: ..
