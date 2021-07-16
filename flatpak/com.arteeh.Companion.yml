@@ -1,7 +1,7 @@
 app-id: com.arteeh.Companion
 # Libhandy apparently depends on vala, so the freedesktop platform is not enough
 runtime: org.gnome.Platform
-runtime-version: '3.38'
+runtime-version: '40'
 sdk: org.gnome.Sdk
 command: /app/bin/run.sh
 
@@ -50,4 +50,4 @@ modules:
       #- type: git
       #  url: https://gitlab.com/arteeh/wasp-companion.git
       - type: dir
-        path: /home/arteeh/git/wasp-companion
+        path: ..
