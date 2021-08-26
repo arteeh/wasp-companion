@@ -13,16 +13,26 @@ from gi.repository import Handy
 # Music player control
 gi.require_version('Playerctl', '2.0')
 from gi.repository import Playerctl, GLib
+# Gio
+from gi.repository import Gio
 
 # return true to prevent other signal handlers from deleting objects from the builder
 class Handler:
+	def _btnClose(self, *args):
+		# destroy window
+		app.window.destroy()
+		# set app.window to none, prompting window re-creation on next activation
+		app.window = None
+		return True
+
 	def _btnQuit(self, *args):
-		# exit gtk
-		Gtk.main_quit()
+		# release app (stop keeping it alive)
+		app.release()
+		# properly quit the app
+		app.quit()
 		# exit all threads
 		os._exit(1)
-		return True
-	
+
 	def _btnAbout(self, *args):
 		o("windowAbout").show()
 		return True
@@ -31,53 +41,72 @@ class Handler:
 		o("windowAbout").hide()
 		return True
 
+class Companion(Gtk.Application):
+	def __init__(self):
+		Gtk.Application.__init__(self,
+			application_id="com.arteeh.Companion",
+			flags=Gio.ApplicationFlags.FLAGS_NONE)
+		self.window = None
+
+	def do_startup(self):
+		Gtk.Application.do_startup(self)
+		self.hold()
+
+		self.create_window()
+		self.threadW = threading.Thread(target=threadWasptool, args=[self])
+
+		self.threadW.start()
+
+	def do_activate(self):
+		if not self.window:
+			self.create_window()
+		self.window.present()
+
+	def create_window(self):
+		Gtk.init()
+		Handy.init()
+		global builder
+		builder = Gtk.Builder()
+		builder.add_from_file("/app/bin/app.ui")
+		builder.connect_signals(Handler())
+		self.objects = builder.get_objects()
+		self.window = self.o("window")
+		self.window.set_application(self)
+		self.window.show_all()
+
+	def o(self, name):
+		for i in range(0, len(self.objects)):
+			if self.objects[i].get_name() == name:
+				return self.objects[i]
+		return -1
+
 # Fuction for grabbing UI objects
 def o(name):
-	for i in range(0,len(objects)):
-		if objects[i].get_name() == name:
-			return objects[i]
+	for i in range(0,len(app.objects)):
+		if app.objects[i].get_name() == name:
+			return app.objects[i]
 	return -1
-
-# Start the app
-def init():
-	print("initializing")
-	Gtk.init()
-	Handy.init()
-	global builder
-	builder = Gtk.Builder()
-	builder.add_from_file("/app/bin/app.ui")
-	builder.connect_signals(Handler())
-	global objects
-	objects = builder.get_objects()
-	o("window").show_all()
-	print("initialized")
 
 # Set the time
 def rtc():
-	o("lblInitializing").set_label("Checking if time is synced...")
+	app.o("lblInitializing").set_label("Checking if time is synced...")
 	output=subprocess.check_output(['/app/bin/wasptool','--check-rtc'],universal_newlines=True)
 	if output.find("delta 0") >= 0:
 		print("time is already synced")
 	else:
-		o("lblInitializing").set_label("Syncing time...")
+		app.o("lblInitializing").set_label("Syncing time...")
 		#output=subprocess.check_output(['/app/bin/wasptool','--rtc'],universal_newlines=True)
 		print(output)
-	o("lblInitializing").set_label("Done!")
-
-# UI thread
-def threadGtk():
-	print("gtk thread started")
-	Gtk.main()
-	print("gtk thread ended")
+	app.o("lblInitializing").set_label("Done!")
 
 # Thread for calling wasptool
-def threadWasptool():
+def threadWasptool(app):
 	print("wasptool thread started")
 	rtc()
 	print("wasptool thread ended")
 
-init()
-threadG = threading.Thread(target=threadGtk)
-threadW = threading.Thread(target=threadWasptool)
-threadG.start()
-threadW.start()
+if __name__ == "__main__":
+	global app
+	app = Companion()
+	app.run(sys.argv)
+

@@ -30,6 +30,22 @@
             <property name="position">0</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkModelButton" id="btnQuit">
+            <property name="name">btnQuit</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="text" translatable="yes">Quit</property>
+            <property name="centered">True</property>
+            <signal name="clicked" handler="_btnQuit" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
       </object>
     </child>
   </object>
@@ -39,7 +55,7 @@
     <property name="window-position">center</property>
     <property name="default-width">500</property>
     <property name="default-height">720</property>
-    <signal name="destroy" handler="_btnQuit" swapped="no"/>
+    <signal name="destroy" handler="_btnClose" swapped="no"/>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
