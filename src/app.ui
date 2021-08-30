@@ -131,7 +131,8 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSpinner">
+                      <object class="GtkSpinner" id="spnInitializing">
+                        <property name="name">spnInitializing</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="valign">start</property>

@@ -52,15 +52,32 @@ class Companion(Gtk.Application):
 		Gtk.Application.do_startup(self)
 		self.hold()
 
+		self.in_startup = True
+		# declare that the application is currently starting up. Certain variables are not available yet.
+
 		self.create_window()
 		self.threadW = threading.Thread(target=threadWasptool, args=[self])
 
 		self.threadW.start()
 
+		self.in_startup = False
+
 	def do_activate(self):
 		if not self.window:
 			self.create_window()
 		self.window.present()
+
+# change the parts of the UI relevant to syncing: Sync spinner and sync label.
+	def set_syncing(self, active, desc="Checking if time is synced..."):
+		if active:
+			self.o("spnInitializing").start()
+		else:
+			self.o("spnInitializing").stop()
+		self.o("lblInitializing").set_label(desc)
+		self.sync_desc_str = desc
+		self.sync_activity = active
+
+		print(self.sync_activity)
 
 	def create_window(self):
 		Gtk.init()
@@ -72,6 +89,11 @@ class Companion(Gtk.Application):
 		self.objects = builder.get_objects()
 		self.window = self.o("window")
 		self.window.set_application(self)
+
+		if not self.in_startup:
+			# skip in startup because sync_activity and sync_desc_str are not available yet
+			self.set_syncing(self.sync_activity, self.sync_desc_str)
+
 		self.window.show_all()
 
 	def o(self, name):
@@ -89,15 +111,15 @@ def o(name):
 
 # Set the time
 def rtc():
-	app.o("lblInitializing").set_label("Checking if time is synced...")
+	app.set_syncing(True)
 	output=subprocess.check_output(['/app/bin/wasptool','--check-rtc'],universal_newlines=True)
 	if output.find("delta 0") >= 0:
 		print("time is already synced")
 	else:
-		app.o("lblInitializing").set_label("Syncing time...")
+		app.set_syncing(True, desc="Syncing time...")
 		#output=subprocess.check_output(['/app/bin/wasptool','--rtc'],universal_newlines=True)
 		print(output)
-	app.o("lblInitializing").set_label("Done!")
+	app.set_syncing(False, desc="Done!")
 
 # Thread for calling wasptool
 def threadWasptool(app):
